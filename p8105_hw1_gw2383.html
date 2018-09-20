@@ -225,7 +225,17 @@ div.tocify {
 </div>
 
 
-
+<div id="problem-1" class="section level2">
+<h2>Problem 1</h2>
+<p>First we start with creating a data frame:</p>
+<pre class="r"><code>prob1_df = tibble (
+  vec_runif = runif(10, min = 0, max = 5), 
+  vec_logical = c(vec_runif &gt; 2), 
+  vec_char = c(&quot;p8105&quot;, &quot;data&quot;, &quot;science&quot;, &quot;is&quot;, &quot;great&quot;, 
+               &quot;my&quot;, &quot;name&quot;, &quot;is&quot;, &quot;guojing&quot;, &quot;wu&quot;), 
+  vec_factor = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3, 1))
+)</code></pre>
+</div>
 
 
 
