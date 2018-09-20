@@ -13,16 +13,57 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
+***
+
 ## Problem 1
 
-First we start with creating a data frame:
+### step 1
+
+We start with creating a data frame:
 
 ```{r}
 prob1_df = tibble (
   vec_runif = runif(10, min = 0, max = 5), 
-  vec_logical = c(vec_runif > 2), 
+  vec_logical = c(vec_runif > 2), # judge the vec_runif and reture True or False
   vec_char = c("p8105", "data", "science", "is", "great", 
                "my", "name", "is", "guojing", "wu"), 
   vec_factor = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3, 1))
 )
+
+# show the result
+prob1_df
 ```
+
+### step 2
+
+Calculate the mean of each variable
+
+<br/>
+
+```{r}
+mean(prob1_df$vec_runif)
+```  
+* Since vec_runif is numerical, we can calculate the mean value.
+
+<br/>
+
+```{r}
+mean(prob1_df$vec_logical)
+```
+* R regard the logical value true as 1 and false as 0, so we can also calculate the mean value.
+
+<br/>
+
+```{r}
+mean(prob1_df$vec_char)
+```
+* The characters are not numerical, so we can't calculate mean value.
+
+<br/>
+
+```{r}
+mean(prob1_df$vec_factor)
+```
+* The characters are not numerical, so we can't calculate mean value.
+
+<br/>
