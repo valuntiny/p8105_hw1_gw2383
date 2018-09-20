@@ -244,29 +244,28 @@ prob1_df</code></pre>
 <pre><code>## # A tibble: 10 x 4
 ##    vec_runif vec_logical vec_char vec_factor
 ##        &lt;dbl&gt; &lt;lgl&gt;       &lt;chr&gt;    &lt;fct&gt;     
-##  1     2.89  TRUE        p8105    1         
-##  2     2.07  TRUE        data     2         
-##  3     0.612 FALSE       science  3         
-##  4     0.487 FALSE       is       1         
-##  5     0.710 FALSE       great    2         
-##  6     4.02  TRUE        my       3         
-##  7     1.45  FALSE       name     1         
-##  8     4.80  TRUE        is       2         
-##  9     1.37  FALSE       guojing  3         
-## 10     2.78  TRUE        wu       1</code></pre>
+##  1     4.07  TRUE        p8105    1         
+##  2     2.01  TRUE        data     2         
+##  3     2.26  TRUE        science  3         
+##  4     0.397 FALSE       is       1         
+##  5     3.93  TRUE        great    2         
+##  6     3.10  TRUE        my       3         
+##  7     1.34  FALSE       name     1         
+##  8     1.35  FALSE       is       2         
+##  9     1.22  FALSE       guojing  3         
+## 10     2.19  TRUE        wu       1</code></pre>
 </div>
 <div id="step-2" class="section level3">
 <h3>step 2</h3>
 <p>Calculate the mean of each variable</p>
-<p><br /></p>
 <pre class="r"><code>mean(prob1_df$vec_runif)</code></pre>
-<pre><code>## [1] 2.120394</code></pre>
+<pre><code>## [1] 2.186488</code></pre>
 <ul>
 <li>Since vec_runif is numerical, we can calculate the mean value.</li>
 </ul>
 <p><br /></p>
 <pre class="r"><code>mean(prob1_df$vec_logical)</code></pre>
-<pre><code>## [1] 0.5</code></pre>
+<pre><code>## [1] 0.6</code></pre>
 <ul>
 <li>R regard the logical value true as 1 and false as 0, so we can also calculate the mean value.</li>
 </ul>
@@ -286,7 +285,26 @@ prob1_df</code></pre>
 <ul>
 <li>The characters are not numerical, so we can’t calculate mean value.</li>
 </ul>
-<p><br /></p>
+</div>
+<div id="step-3" class="section level3">
+<h3>step 3</h3>
+<p>Applies the <code>as.numeric</code> function to the logical, character, and factor variables.</p>
+<pre class="r"><code>as.numeric(prob1_df$vec_logical)
+as.numeric(prob1_df$vec_char)
+as.numeric(prob1_df$vec_factor)</code></pre>
+<p>What happened are:</p>
+<ul>
+<li>Logical vector is converted to <code>0</code> (for false) and <code>1</code> (for true)<br />
+</li>
+<li>Character vector is converted to <code>NA</code><br />
+</li>
+<li>Factor vector is converted to numbers</li>
+</ul>
+<p>But my factor vector is generated from a numerical vector, so here we disscuss another type of situation: what will happen if the factor vector is generated from a character vector.</p>
+<pre class="r"><code>vec_factor_2 = factor(c(&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;b&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;))
+as.numeric(vec_factor_2)</code></pre>
+<pre><code>##  [1] 1 1 2 2 2 3 4 5 6 7</code></pre>
+<p>Here we see that characters also been converted to numbers! And the same characters designated the same number.</p>
 </div>
 </div>
 
