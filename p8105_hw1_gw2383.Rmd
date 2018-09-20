@@ -88,3 +88,26 @@ as.numeric(vec_factor_2)
 ```
 
 Here we see that characters also been converted to numbers! And the same characters designated the same number.
+
+### step 4
+
+Convert character variable from character to factor to numeric:
+
+```{r}
+as.numeric(as.factor(prob1_df$vec_char))
+```
+
+Here we can see that the character vector is first converted to factor, and since all the characters are different, they are in different factor levels.  
+Then, R assigned them with different values.
+
+<br/>
+
+Convert factor variable from factor to character to numeric:
+
+```{r}
+as.numeric(as.character(prob1_df$vec_factor))
+```
+
+Here we can see that factor vector is first converted to character, and since all the factors are numerical, they are actually converted from factor (like `1`) into the same word but in type of character (like `"1"`). Then they are converted into number accordingly.
+
+## Problem 2
