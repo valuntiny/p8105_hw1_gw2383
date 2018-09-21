@@ -19,7 +19,7 @@ library(tidyverse)
 
 ### step 1
 
-We start with creating a data frame:
+**We start with creating a data frame:**
 
 ```{r}
 prob1_df = tibble (
@@ -36,7 +36,7 @@ prob1_df
 
 ### step 2
 
-Calculate the mean of each variable
+**Calculate the mean of each variable**
 
 ```{r}
 mean(prob1_df$vec_runif)
@@ -66,7 +66,7 @@ mean(prob1_df$vec_factor)
 
 ### step 3
 
-Applies the `as.numeric` function to the logical, character, and factor variables.
+**Applies the `as.numeric` function to the logical, character, and factor variables.**
 
 ```{r, results = "hide", warning = FALSE}
 as.numeric(prob1_df$vec_logical)
@@ -91,7 +91,7 @@ Here we see that characters also been converted to numbers! And the same charact
 
 ### step 4
 
-Convert character variable from character to factor to numeric:
+**Convert character variable from character to factor to numeric:**
 
 ```{r}
 as.numeric(as.factor(prob1_df$vec_char))
@@ -102,7 +102,7 @@ Then, R assigned them with different values.
 
 <br/>
 
-Convert factor variable from factor to character to numeric:
+**Convert factor variable from factor to character to numeric:**
 
 ```{r}
 as.numeric(as.character(prob1_df$vec_factor))
@@ -114,7 +114,7 @@ Here we can see that factor vector is first converted to character, and since al
 
 ### step 1
 
-Create a data.frame.
+**Create a data.frame.**
 
 ```{r}
 prob2_df = tibble(
@@ -128,13 +128,15 @@ prob2_df = tibble(
 
 ### step 2
 
-Descript the vector:   
+**Descript the vector:   **
 
 * The dimension of the dataset is (`r dim(prob2_df)`), which means it has `r dim(prob2_df)[1]` columns and `r dim(prob2_df)[2]` rows.  
 * The mean of x is `r mean(prob2_df$x)`, the median of x is `r median(prob2_df$x)`.
 * The proportion of cases for which the logical vector is `TRUE`: `r length(which(prob2_df$vec_factor == 'TRUE')) / length(prob2_df$vec_factor)`.
 
 ### step 3
+
+**Make scatterplots using `ggplot2`.**
 
 * Make a scatterplot of `y` vs `x`, color points using the logical variable.
 
