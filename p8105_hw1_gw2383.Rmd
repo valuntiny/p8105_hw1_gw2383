@@ -134,7 +134,25 @@ Descript the vector:
 * The mean of x is `r mean(prob2_df$x)`, the median of x is `r median(prob2_df$x)`.
 * The proportion of cases for which the logical vector is `TRUE`: `r length(which(prob2_df$vec_factor == 'TRUE')) / length(prob2_df$vec_factor)`.
 
+### step 3
+
+* Make a scatterplot of `y` vs `x`, color points using the logical variable.
 
 ```{r}
+ggplot(prob2_df, aes(x = x, y = y)) + 
+  geom_point(aes(color = vec_logical))
+```
 
+* Make a scatterplot of `y` vs `x`, color points using the numerical variable.
+
+```{r}
+ggplot(prob2_df, aes(x = x, y = y)) + 
+  geom_point(aes(color = vec_num))
+```
+
+* Make a scatterplot of `y` vs `x`, color points using the factor variable.
+
+```{r}
+ggplot(prob2_df, aes(x = x, y = y)) + 
+  geom_point(aes(color = vec_factor))
 ```
