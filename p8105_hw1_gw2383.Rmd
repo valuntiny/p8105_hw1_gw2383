@@ -80,7 +80,7 @@ What happened are:
   * Character vector is converted to `NA`  
   * Factor vector is converted to numbers
   
-But my factor vector is generated from a numerical vector, so here we disscuss another type of situation: what will happen if the factor vector is generated from a character vector.
+**\* Notice:** my factor vector is generated from a numerical vector, so here we disscuss another type of situation: what will happen if the factor vector is generated from a character vector.
 
 ```{r}
 vec_factor_2 = factor(c("a", "a", "b", "b", "b", "c", "d", "e", "f", "g"))
@@ -110,6 +110,14 @@ as.numeric(as.character(prob1_df$vec_factor))
 
 Here we can see that factor vector is first converted to character, and since all the factors are numerical, they are actually converted from factor (like `1`) into the same word but in type of character (like `"1"`). Then they are converted into number accordingly.
 
+**\* Notice:** here we disscuss another type of situation: what will happen if the factor vector is generated from a character vector.
+
+```{r}
+as.numeric(as.character(vec_factor_2))
+```
+
+Here we see that the string-based factor first converted to character correspondingly, but then `NA` produced by converting characters to numbers.
+
 ## Problem 2
 
 ### step 1
@@ -136,7 +144,7 @@ prob2_df = tibble(
 
 ### step 3
 
-**Make scatterplots using `ggplot2`.**
+**Make scatterplots using `ggplot2`:**
 
 * Make a scatterplot of `y` vs `x`, color points using the logical variable.
 
