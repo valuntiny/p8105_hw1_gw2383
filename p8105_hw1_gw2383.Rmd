@@ -43,21 +43,21 @@ mean(prob1_df$vec_runif)
 ```  
 * Since vec_runif is numerical, we can calculate the mean value.
 
-<br/>
+***
 
 ```{r}
 mean(prob1_df$vec_logical)
 ```
 * R regard the logical value true as 1 and false as 0, so we can also calculate the mean value.
 
-<br/>
+***
 
 ```{r}
 mean(prob1_df$vec_char)
 ```
 * The characters are not numerical, so we can't calculate mean value.
 
-<br/>
+***
 
 ```{r}
 mean(prob1_df$vec_factor)
@@ -122,7 +122,7 @@ Here we see that the string-based factor first converted to character correspond
 
 ### step 1
 
-**Create a data.frame.**
+**Create a data.frame: **
 
 ```{r}
 prob2_df = tibble(
@@ -136,7 +136,7 @@ prob2_df = tibble(
 
 ### step 2
 
-**Descript the vector:   **
+**Describe the vector:   **
 
 * The dimension of the dataset is (`r dim(prob2_df)`), which means it has `r dim(prob2_df)[1]` columns and `r dim(prob2_df)[2]` rows.  
 * The mean of x is `r mean(prob2_df$x)`, the median of x is `r median(prob2_df$x)`.
@@ -149,9 +149,14 @@ prob2_df = tibble(
 * Make a scatterplot of `y` vs `x`, color points using the logical variable.
 
 ```{r}
-ggplot(prob2_df, aes(x = x, y = y)) + 
+scat_logical = ggplot(prob2_df, aes(x = x, y = y)) + 
   geom_point(aes(color = vec_logical))
+scat_logical
 ```
+
+Since the color parameters only have two logical values, ggplot only assign them with two colors.
+ 
+***
 
 * Make a scatterplot of `y` vs `x`, color points using the numerical variable.
 
@@ -160,9 +165,23 @@ ggplot(prob2_df, aes(x = x, y = y)) +
   geom_point(aes(color = vec_num))
 ```
 
+Now that the color parameters are numerical, ggplot then create a whole chromatography to describe the color. Although it only has two numerical values `0` and `1`.
+
+***
+
 * Make a scatterplot of `y` vs `x`, color points using the factor variable.
 
 ```{r}
 ggplot(prob2_df, aes(x = x, y = y)) + 
   geom_point(aes(color = vec_factor))
+```
+
+The color parameters only have two factors level, ggplot only assign them with two colors.
+
+### step 5
+
+**Save the image**
+
+```{r}
+ggsave(scat_logical, file = "./scat_logical.pdf")
 ```
